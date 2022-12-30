@@ -2,7 +2,7 @@ const hre = require("hardhat");
 
 async function main() {
   const HairToken = await hre.ethers.getContractFactory("HairToken");
-  const hairToken = await HairToken.deploy(30000000, 50);
+  const hairToken = await HairToken.deploy(125000);
 
   await hairToken.deployed();
 

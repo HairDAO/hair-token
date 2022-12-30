@@ -4,19 +4,18 @@ const hre = require("hardhat");
 describe("HairToken contract", function () {
   // global vars
   let Token;
+  let initSupply = 125000;
   let hairToken;
   let owner;
   let addr1;
   let addr2;
-  let tokenCap = 100000000;
-  let tokenBlockReward = 50;
 
   beforeEach(async function () {
     // Get the ContractFactory and Signers here.
     Token = await ethers.getContractFactory("HairToken");
     [owner, addr1, addr2] = await hre.ethers.getSigners();
 
-    hairToken = await Token.deploy(tokenCap, tokenBlockReward);
+    hairToken = await Token.deploy(initSupply);
   });
 
   describe("Deployment", function () {
@@ -27,18 +26,6 @@ describe("HairToken contract", function () {
     it("Should assign the total supply of tokens to the owner", async function () {
       const ownerBalance = await hairToken.balanceOf(owner.address);
       expect(await hairToken.totalSupply()).to.equal(ownerBalance);
-    });
-
-    it("Should set the max capped supply to the argument provided during deployment", async function () {
-      const cap = await hairToken.cap();
-      expect(Number(hre.ethers.utils.formatEther(cap))).to.equal(tokenCap);
-    });
-
-    it("Should set the blockReward to the argument provided during deployment", async function () {
-      const blockReward = await hairToken.blockReward();
-      expect(Number(hre.ethers.utils.formatEther(blockReward))).to.equal(
-        tokenBlockReward
-      );
     });
   });
 
