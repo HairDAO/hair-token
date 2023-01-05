@@ -25,7 +25,7 @@ contract HairTokenSale {
 
     function buyTokens(uint256 _numberOfTokens) public payable {
         require(msg.value == multiply(_numberOfTokens, tokenPrice));
-        require(tokenContract.balanceOf(address(this) >= _numberOfTokens);
+        require(tokenContract.balanceOf(address(this) >= _numberOfTokens));
         require(tokenContract.transfer(msg.sender, _numberOfTokens));
 
         tokensSold += _numberOfTokens;
@@ -35,7 +35,12 @@ contract HairTokenSale {
 
     function endSale() public {
         require(msg.sender == admin);
-        require(tokenContract.transfer(admin, tokenContract.balanceOf(address(this)));
+        require(
+            tokenContract.transfer(
+                admin,
+                tokenContract.balanceOf(address(this))
+            )
+        );
 
         // Transfer balance to admin at the end of the auction
         admin.transfer(address(this).balance);
