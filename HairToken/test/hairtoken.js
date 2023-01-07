@@ -4,7 +4,10 @@ const hre = require("hardhat");
 describe("HairToken contract", function () {
   // global vars
   let Token;
-  let initSupply = hre.ethers.utils.parseEther("125000");
+
+  // Use parseEther to convert 125000 to wei (just like Ether we use 18 decimals for the token)
+  let initialSupply = hre.ethers.utils.parseEther("125000");
+
   let hairToken;
   let owner;
   let addr1;
@@ -15,7 +18,7 @@ describe("HairToken contract", function () {
     Token = await ethers.getContractFactory("HairToken");
     [owner, addr1, addr2] = await hre.ethers.getSigners();
 
-    hairToken = await Token.deploy(initSupply, owner.address);
+    hairToken = await Token.deploy(initialSupply, owner.address);
   });
 
   describe("Deployment", function () {
@@ -29,7 +32,7 @@ describe("HairToken contract", function () {
     });
 
     it("Should mint initial supply", async function () {
-      expect(await hairToken.totalSupply()).to.equal(initSupply);
+      expect(await hairToken.totalSupply()).to.equal(initialSupply);
     });
   });
 
