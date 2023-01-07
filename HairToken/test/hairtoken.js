@@ -2,16 +2,11 @@ const { expect } = require("chai");
 const hre = require("hardhat");
 
 describe("HairToken contract", function () {
-  // global vars
   let Token;
 
   // Use parseEther to convert 125000 to wei (just like Ether we use 18 decimals for the token)
   let initialSupply = hre.ethers.utils.parseEther("125000");
-
   let hairToken;
-  let owner;
-  let addr1;
-  let addr2;
 
   beforeEach(async function () {
     // Get the ContractFactory and Signers here.

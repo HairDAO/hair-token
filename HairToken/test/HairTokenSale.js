@@ -4,9 +4,6 @@ const hre = require("hardhat");
 describe("HairTokenSale", () => {
   let hairTokenSale;
   let hairToken;
-  let owner;
-  let addr1;
-  let addr2;
   let tokenPrice = hre.ethers.utils.parseEther("0.0007");
   let initSupply = hre.ethers.utils.parseEther("125000");
 
