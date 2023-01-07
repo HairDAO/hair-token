@@ -22,6 +22,7 @@ contract HairTokenSale is Ownable {
     }
 
     function startSale() public onlyOwner {
+        require(tokenContract.balanceOf(address(this)) >= 0, "No token balance to sell in this contract");
         saleActive = true;
     }
 
