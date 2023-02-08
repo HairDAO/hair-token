@@ -20,7 +20,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract HairToken is ERC20, ERC20Burnable, Ownable {
     // Mint initial supply and send it to the
     // initial supply recipient
-    constructor(uint256 initialSupply, address initialSupplyRecipient) ERC20("HairToken", "HAIR") {
+    constructor(uint256 initialSupply, address initialSupplyRecipient) ERC20("HairDAO Token", "HAIR") {
         _mint(initialSupplyRecipient, initialSupply);
     }
 
