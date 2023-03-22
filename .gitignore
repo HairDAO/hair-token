@@ -1,13 +1,28 @@
+# hardhat
 node_modules
-.env
-coverage
-coverage.json
-typechain
-typechain-types
-
-# Hardhat files
-cache
+build
+contracts/artifacts
+*.env
+.idea
 artifacts
+cache
+data
+coverage*
+env
 
-.DS_Store
-yarn-error.log
+# Compiler files
+cache/
+out/
+
+# Ignores development broadcast logs
+broadcast
+
+# Docs
+docs/
+
+# Dotenv file
+.env
+
+!.gitkeep
+
+lcov.info
